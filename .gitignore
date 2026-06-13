@@ -1,0 +1,6 @@
+# Never commit live configs — use config.example.json as the template
+config.json
+
+# OS
+.DS_Store
+Thumbs.db

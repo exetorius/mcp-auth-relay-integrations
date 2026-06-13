@@ -1,7 +1,7 @@
 [
   {
     "name": "vibeue_status",
-    "description": "Check VibeUE setup status and get next steps. Call this first if tools are not responding or UE seems unreachable. For first-time setup, read Plugins/VibeUE/Content/Setup/Claude_MCP_Setup.md.",
+    "description": "Check whether Unreal Engine is running and the VibeUE MCP server is reachable. Returns setup status and next steps if configuration is missing. Call this first when tools are failing or to verify your environment before starting work.",
     "inputSchema": {
       "type": "object",
       "properties": {},

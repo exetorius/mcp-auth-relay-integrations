@@ -71,6 +71,6 @@ Human-facing setup guide for the pack.
 1. Fork this repo
 2. Create a folder named after your integration (e.g. `my-server/`)
 3. Add whichever files apply — all are optional
-4. Submit a PR with a brief description of what the upstream server is
+4. Submit a PR to the `contrib` branch — not `main`
 
 Pack folder names should be lowercase, hyphenated, and match the upstream server's common name.

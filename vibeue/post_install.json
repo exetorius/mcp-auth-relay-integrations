@@ -1,0 +1,12 @@
+[
+  {
+    "type": "mcp_server",
+    "prompt": "Optional: VibeUE pairs with an external UE knowledge server at unrealengineskills.com.\n  It provides engine architecture, best practices, and API guidance alongside\n  VibeUE's live editor control — no API key needed, free to use.",
+    "server_name": "unreal-engine-skills",
+    "server_config": {
+      "type": "http",
+      "url": "https://www.unrealengineskills.com/api/mcp"
+    },
+    "target": "~/.claude/.mcp.json"
+  }
+]

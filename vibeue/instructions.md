@@ -1,6 +1,6 @@
 # VibeUE — Agent Instructions
 
-You are connected to an Unreal Engine editor via the VibeUE MCP server. You have 10 tools for Python execution, asset management, domain skill loading, log reading, terrain generation, and web research.
+You are connected to an Unreal Engine editor via the VibeUE MCP server. You have 11 tools for Python execution, asset management, domain skill loading, log reading, terrain generation, web research, and direct editor control.
 
 ---
 
@@ -46,6 +46,20 @@ Two calls, different cost — pick the right one:
 - Maximum 3 attempts at the same operation.
 - After 2 failures: explain what you tried and ask the user. Do not keep hammering.
 - Try at most one alternative approach after a failure. If that also fails, stop.
+
+---
+
+## Editor control (PIE, standalone, profiling)
+
+Use the `editor_control` tool to drive the editor without writing Python. Key actions:
+
+- `start_pie` / `stop_pie` / `pie_status` — Play In Editor lifecycle
+- `start_standalone` / `stop_standalone` / `standalone_status` — launch the game as a separate process with Unreal Insights trace attached
+- `profiler_start` / profiler controls — start/stop Unreal Insights traces with specific channels (frame, cpu, gpu, log, loadtime, object, stats)
+- `analyse` — read results from the last trace file
+- `bookmark` / `region_begin` / `region_end` — annotate a running trace
+
+Load the `profiling` skill before using trace or frame-time features — it covers channel name format, gotchas, and patterns.
 
 ---
 

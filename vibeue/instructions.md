@@ -9,13 +9,13 @@ You are connected to an Unreal Engine editor via the VibeUE MCP server. You have
 **Discover before you execute.** Never write Python code for a class or function you haven't confirmed exists with that exact signature. The UE Python API is large and wrong names fail silently or error at runtime.
 
 ```
-manage_skills (load relevant domain pack)
+vibeue-skills-manager (load relevant domain pack)
   → discover_python_class / discover_python_function (confirm signatures)
     → execute_python_code (run the code)
       → read_logs (if something went wrong)
 ```
 
-**Load skills proactively, not reactively.** Before working on blueprints, animation, materials, niagara, UMG, state trees, enhanced input, audio, or landscape — load the relevant skill pack first. Load multiple skills in one call; it is more efficient than separate calls.
+**Load skills proactively, not reactively.** Before working on blueprints, animation, materials, niagara, UMG, state trees, enhanced input, audio, or landscape — load the relevant skill pack first with `vibeue-skills-manager`. Call `action='list'` for the current skill menu, `action='suggest'` to match a task to a skill, `action='load'` to pull one in. Load multiple skills in one call; it is more efficient than separate calls.
 
 **Use manage_asset for all asset operations.** Do not reach for raw Python when manage_asset covers the operation. It handles Content Browser paths, reference tracking, and edge cases that raw Python gets wrong. Always use Content Browser paths (`/Game/Blueprints/BP_Player`), never file system paths. Never simulate a move with duplicate + delete — use the `move` action.
 
@@ -28,15 +28,6 @@ manage_skills (load relevant domain pack)
 - After adding variables, functions, or components to a Blueprint: always call `unreal.BlueprintService.compile_blueprint(path)`. Re-read the graph before claiming the task is complete.
 - 60 second execution timeout. For long operations, break them into smaller steps.
 - Known limitation: `add_set_variable_node` and `add_get_variable_node` fail for object reference variable types. Use `execute_python_code` with the direct Python API as a workaround.
-
----
-
-## Widget Blueprint inspection
-
-Two calls, different cost — pick the right one:
-
-- `unreal.WidgetService.list_components(path)` — hierarchy and parent/child relationships, lightweight. Use this for "what's in this widget" questions.
-- `unreal.WidgetService.get_widget_snapshot(path)` — full hierarchy + slot info + all properties. Use only when you need property data (bindings, anchors, visibility, is_variable etc.). Token-heavy — don't use it just for structure.
 
 ---
 

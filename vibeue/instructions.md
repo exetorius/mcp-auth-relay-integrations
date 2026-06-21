@@ -44,13 +44,15 @@ vibeue-skills-manager (load relevant domain pack)
 
 Use the `editor_control` tool to drive the editor without writing Python. Key actions:
 
+- `screenshot` — synchronous PNG of the editor or active window so you can SEE what you built and self-review (params: `mode=editor_window|active_window`, `name`)
+- `frame_timing` — RUN THIS FIRST for performance work: reports the Game/Render/GPU thread split plus a CPU-vs-GPU bound verdict
 - `start_pie` / `stop_pie` / `pie_status` — Play In Editor lifecycle
 - `start_standalone` / `stop_standalone` / `standalone_status` — launch the game as a separate process with Unreal Insights trace attached
-- `profiler_start` / profiler controls — start/stop Unreal Insights traces with specific channels (frame, cpu, gpu, log, loadtime, object, stats)
-- `analyse` — read results from the last trace file
-- `bookmark` / `region_begin` / `region_end` — annotate a running trace
+- `profiler_start` / `profiler_stop` / `profiler_status` — start/stop Unreal Insights traces with specific channels (frame, cpu, gpu, log, loadtime, object, stats)
+- `profiler_bookmark` / `profiler_region_start` / `profiler_region_end` — annotate a running trace
+- `analyse` — read trace + logs and return a perf summary (`source=trace|logs|both`)
 
-Load the `profiling` skill before using trace or frame-time features — it covers channel name format, gotchas, and patterns.
+Load the `profiling` skill before using trace or frame-time features — it covers channel name format, gotchas, and patterns. Use the `screenshots` skill for capture/self-review patterns.
 
 ---
 
